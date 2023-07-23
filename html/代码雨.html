@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .code {
+      height: 100vh;
+      width: 100vw;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const canvas = document.querySelector(".code");
+      const width = window.innerWidth * devicePixelRatio;
+      const height = window.innerHeight * devicePixelRatio;
+      canvas.height = height;
+      canvas.width = width;
+
+      const ctx = canvas.getContext("2d");
+
+      const fontSize = 20 * devicePixelRatio;
+
+      const columnWith = fontSize;
+
+      const columnCount = Math.floor(width / columnWith);
+
+      const nextChar = new Array(columnCount).fill(0);
+
+      function draw() {
+        ctx.fillStyle = 'rgba(240,204,240, 0.1)';
+        ctx.fillRect(0,0,width, height);
+        for( let i = 0 ;i < columnCount; i++)  {
+          ctx.fillStyle = getRadomColor();
+          ctx.font = `${fontSize}px "Roboto Mono"`;
+          const char = getRadomChar();
+          const x = i* columnCount;
+          const s = nextChar[i];
+          const y = (s + 1) * fontSize;
+          ctx.fillText(char, x, y);
+          nextChar[i]++;
+          if (y > height && Math.random() > 0.9) {
+            nextChar[i] = 0;
+          } else {
+            nextChar[i]++
+          }
+        }
+
+      }
+      setInterval(draw, 30);
+
+      function getRadomColor() {
+        const fontColors = [
+          '#3358E5',
+          '#2dc32d',
+          '#0034d2',
+          '#4002d5',
+          '#009ef0',
+          '#832343',
+          '#c34356',
+          '#ff3245',
+          '#0035a2',
+        ];
+        return fontColors[Math.floor(Math.random() * fontColors.length)]
+      }
+
+      function getRadomChar() {
+        const str = `console.log(hello word)`;
+        return str[Math.floor(Math.random() * str.length)];
+      }
+    })
+  </script>
+</head>
+<body>
+  <canvas class="code"></canvas>
+</body>
+</html>

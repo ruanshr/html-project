@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      position: relative;
+    }
+    .video {
+      width: 100%;
+    }
+    .txt {
+      position: absolute;
+      inset: 0;
+      background-color: #FFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 100px;
+      mix-blend-mode: screen;
+      /** 255 - (255 - A) * ( 255 - B) / 255 滤色 **/
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <video src="'./asstes/images/video.mp4" autoplay muted loop>
+
+    </video>
+    <div class="txt">三国志</div>
+  </div>
+</body>
+</html>

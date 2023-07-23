@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .avatar {
+      background: url(../assets/images/avatar.jpg) center;
+      background-size: 100% 100%;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+    }
+    .avatar::before, .avatar::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+    }
+    .avatar::before {
+      background:rgba(0, 0,0,  0.7);
+    }
+    .avatar::after {
+      background: inherit;
+      clip-path: circle(0 at 50% 50%);
+      transition: 0.5s;
+    }
+    .avatar:hover::after {
+      clip-path: circle(50% at 50% 50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="avatar"></div>
+</body>
+</html>
